@@ -24,6 +24,54 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, jasmine');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, jasmine'
+    );
+  });
+
+  it('Should return a + b', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const result = app.add(1, 2);
+    expect(result).toBe(3);
   });
 });
+
+describe('AppComponent', () => {
+  let userData: any;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  beforeEach(async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    userData = await app.fetchUserData(123);
+  });
+
+  it('Should return correct user datas', () => {
+    expect(userData).toEqual({
+      id: 123,
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+    });
+  });
+});
+
+// Les méthodes sur expect
+
+// .toBe(value)
+// .toEqual(value)
+// .toContain(element)
+// .toBeNull()
+// .toBeTruthy()
+// .toBeFalsy()
+// .toBeUndefined()
+// .toBeDefined()
+// .toBeGreaterThan(number)
+// .toBeLessThan(number)
+// .toBeCloseto(number, precision)
+// .toThrow(error)
