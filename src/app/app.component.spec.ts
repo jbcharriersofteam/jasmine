@@ -16,6 +16,7 @@ describe('AppComponent', () => {
 
   it(`should have the 'jasmine' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
+    // componentInstance permet d'accéder à l'instance du composant
     const app = fixture.componentInstance;
     expect(app.title).toEqual('jasmine');
   });
@@ -23,6 +24,7 @@ describe('AppComponent', () => {
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
+    // nativeElement permet d'accéder au DOM du composant
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
       'Hello, jasmine'
